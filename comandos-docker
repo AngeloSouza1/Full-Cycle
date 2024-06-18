@@ -1,0 +1,30 @@
+Principais comandos Docker
+
+** Listar containers *** 
+
+    docker ps -a
+
+*** Remover containers *** 
+
+    docker rm <nome container> -f
+
+*** Subindo container e colocando um nome (--name) ***
+
+    docker run --name meu_container -d -p 8080:80 nginx  
+
+
+*** Executando comando no container ***
+
+    docker exec <meu_container> <comando: "ls">
+
+
+*** Acessando o Bash (terminal dentro do container) ***
+
+    docker exec -it <meu_container> bash
+
+*** Criando volumes (bind mounts), no container ***
+
+    docker run -d --name <meu_container> -p 8080:80 -v   <caminho do arquivo: "~/Projetos/Fullcycle/Docker/html/:usr/share;nginx/html"> nginx
+
+
+
