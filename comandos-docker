@@ -16,7 +16,6 @@ Principais comandos Docker
 
     docker exec <meu_container> <comando: "ls">
 
-
 *** Acessando o Bash (terminal dentro do container) ***
 
     docker exec -it <meu_container> bash
