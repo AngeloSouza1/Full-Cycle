@@ -24,5 +24,12 @@ Principais comandos Docker
 
     docker run -d --name <meu_container> -p 8080:80 -v   <caminho do arquivo: "~/Projetos/Fullcycle/Docker/html/:/usr/share/nginx/html"> nginx
 
+*** Comando atalho do diretorio
+
+    echo $(pwd)
+
+*** Criando volumes (bind mounts), no container, usando o comando "--mount", devo estar dentro da pasta que quero montar o volume!!! ***
+
+  docker run -d --name meucontainer -p 8080:80 --mount type=bind,source="$(pwd)"/html,target=/usr/share/nginx/html nginx
 
 
