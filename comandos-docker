@@ -12,7 +12,6 @@ Principais comandos Docker
 
     docker run --name meu_container -d -p 8080:80 nginx  
 
-
 *** Executando comando no container ***
 
     docker exec <meu_container> <comando: "ls">
