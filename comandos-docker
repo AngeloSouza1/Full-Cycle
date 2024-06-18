@@ -22,7 +22,7 @@ Principais comandos Docker
 
 *** Criando volumes (bind mounts), no container ***
 
-    docker run -d --name <meu_container> -p 8080:80 -v   <caminho do arquivo: "~/Projetos/Fullcycle/Docker/html/:usr/share;nginx/html"> nginx
+    docker run -d --name <meu_container> -p 8080:80 -v   <caminho do arquivo: "~/Projetos/Fullcycle/Docker/html/:/usr/share/nginx/html"> nginx
 
 
 
