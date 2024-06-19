@@ -1,66 +1,70 @@
-Principais comandos Docker
+# Principais comandos Docker
 
-** Listar containers *** 
 
+### 🔹 Listar containers 
+  ```bash
     docker ps -a
-
-*** Remover containers *** 
+ ```
+   
+### 🔹 Remover containers 
 
     docker rm <nome container> -f
 
-*** Subindo container e colocando um nome (--name) ***
+### 🔹 Container e colocando um nome (--name) 
 
     docker run --name meu_container -d -p 8080:80 nginx  
 
-*** Executando comando no container ***
+### 🔹 Executando comando no container ***
 
     docker exec <meu_container> <comando: "ls">
 
-*** Acessando o Bash (terminal dentro do container) ***
+### 🔹 Acessando o Bash (terminal dentro do container) 
 
     docker exec -it <meu_container> bash
 
-*** Criando volumes (bind mounts), no container ***
+### 🔹 Criando volumes (bind mounts), no container 
 
     docker run -d --name <meu_container> -p 8080:80 -v   <caminho do arquivo: "~/Projetos/Fullcycle/Docker/html/:/usr/share/nginx/html"> nginx
 
-*** Comando atalho do diretorio
+### 🔹 Comando atalho do diretorio
 
     echo $(pwd)
 
-*** Criando volumes (bind mounts), no container, usando o comando "--mount", devo estar dentro da pasta que quero montar o volume!!! ***
+### 🔹 Criando volumes (bind mounts), no container, usando o comando "--mount", devo estar dentro da pasta que quero montar o volume!!! 
 
-  docker run -d --name meucontainer -p 8080:80 --mount type=bind,source="$(pwd)"/html,target=/usr/share/nginx/html nginx
+    docker run -d --name meucontainer -p 8080:80 --mount type=bind,source="$(pwd)"/html,target=/usr/share/nginx/html nginx
 
-*** Trabalhando com volume ***
+### 🔹 Trabalhando com volume 
 
- docker volume create <nome volume>
+     docker volume create <nome volume>
 
-*** Incluindo no container (Nginx) ***
+### 🔹 Incluindo no container (Nginx) 
 
- docker run --name <meucontainer> -d --mount type=volume,source=<meuvolume>, target=/app nginx
-
-
-*** Incluindo no container (Nginx) com comando --v ***
-
- docker run --name <meucontainer> -d -v <meuvolume>:/app nginx
+    docker run --name <meucontainer> -d --mount type=volume,source=<meuvolume>, target=/app nginx
 
 
-*** Criando Imagem ***
+### 🔹 Incluindo no container (Nginx) com comando --v 
 
-  docker build -t AngeloSouza1/nginx-com-vim:latest .
+    docker run --name <meucontainer> -d -v 
+    <meuvolume>:/app nginx
+
+
+### 🔹 Criando Imagem 
+
+    docker build -t AngeloSouza1/nginx-com-vim:latest .
                     (usuarioGithub/nomedaimagem)
                     "." refere-se à pasta atual
 
-*** Apagando Imagens ***
+### 🔹 Apagando Imagens 
 
- docker images
+    docker images
 
-*** Apagando Imagens ***
 
- docker rmi <imagem>
+### 🔹 Apagando Imagens 
+ 
+    docker rmi <imagem>
 
-*** Estrutura arquivo DOCKERFILE ***
+### 🔹 Estrutura arquivo DOCKERFILE
 
     FROM nginx:latest
 
