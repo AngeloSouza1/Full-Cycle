@@ -46,7 +46,13 @@ Principais comandos Docker
  docker run --name <meucontainer> -d -v <meuvolume>:/app nginx
 
 
-*** Trabalhando com Imagens ***
+*** Criando Imagem ***
+
+  docker build -t AngeloSouza1/nginx-com-vim:latest .
+                    (usuarioGithub/nomedaimagem)
+                    "." refere-se à pasta atual
+
+*** Apagando Imagens ***
 
  docker images
 
