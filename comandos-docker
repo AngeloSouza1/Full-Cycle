@@ -40,11 +40,18 @@ Principais comandos Docker
 
  docker run --name <meucontainer> -d --mount type=volume,source=<meuvolume>, target=/app nginx
 
+
 *** Incluindo no container (Nginx) com comando --v ***
 
  docker run --name <meucontainer> -d -v <meuvolume>:/app nginx
 
 
+*** Trabalhando com Imagens ***
 
+ docker images
+
+*** Apagando Imagens ***
+
+ docker rmi <imagem>
 
 
