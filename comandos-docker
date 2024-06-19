@@ -32,4 +32,19 @@ Principais comandos Docker
 
   docker run -d --name meucontainer -p 8080:80 --mount type=bind,source="$(pwd)"/html,target=/usr/share/nginx/html nginx
 
+*** Trabalhando com volume ***
+
+ docker volume create <nome volume>
+
+*** Incluindo no container (Nginx) ***
+
+ docker run --name <meucontainer> -d --mount type=volume,source=<meuvolume>, target=/app nginx
+
+*** Incluindo no container (Nginx) com comando --v ***
+
+ docker run --name <meucontainer> -d -v <meuvolume>:/app nginx
+
+
+
+
 
