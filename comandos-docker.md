@@ -55,6 +55,8 @@
                     (usuarioGithub/nomedaimagem)
                     "." refere-se à pasta atual
 
+    docker run --rm AngeloSouza1/Hello        [rodar a imagem]
+
 ### 🔹 Apagando Imagens 
 
     docker images
@@ -79,14 +81,14 @@
 
     COPY html /usr/share/nginx 
 
+### 🔹 Excluindo todos os containers de uma vez, atraves de uma lista
+
+     docker rm $(docker ps -a -q) -f
 
 
+### 🔹 Alterando comandos do Dockerfile
 
-
-
-
-
-
+     docker run --rm AngeloSouza1/olamundo   echo "Fala Ai"
 
 
 
