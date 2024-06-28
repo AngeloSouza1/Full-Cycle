@@ -1,37 +1,10 @@
-#FROM nginx:latest
+# Use the latest official Nginx image from the Docker Hub
+FROM nginx:latest
 
-#CRIACAO DE UMA IMAGEM (EXEMPLO)
-# RUN apt-get update
-# RUN apt-get install vim -y
+# Copy the content of the html directory to the default Nginx HTML directory
+COPY html /usr/share/nginx/html
 
-#WORKDIR /app
+# Define the entrypoint script and the default command to run Nginx in the foreground
+ENTRYPOINT ["/docker-entrypoint.sh"]
+CMD ["nginx", "-g", "daemon off;"]
 
-#RUN apt-get update && \
-#    apt-get install vim -y
-
-#COPY html/ /usr/share/nginx/html 
-
-#-------------------------------------------------------
-
-#FROM ubuntu:latest
-#
-#CMD [ "echo",  "Hello World!" ]
-#
-
-#-------------------------------------------------------
-
-#FROM ubuntu:latest
-#
-#ENTRYPOINT ["echo", "Hello "]
-#
-#CMD [ "World!" ]
-
-#-------------------------------------------------------
-
-FROM ubuntu:latest
-
-ENTRYPOINT ["echo", "Hello "]
-
-CMD [ "World!" ]
-
-    

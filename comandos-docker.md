@@ -98,7 +98,16 @@
         ENTRYPOINT ["echo", "Hello "]
         CMD [ "World!" ]
 
+### 🔹Publicando imagem no Dockerhub
 
+        FROM nginx:latest
+        COPY html /usr/share/nginx/html
+        ENTRYPOINT ["/docker-entrypoint.sh"]
+        CMD ["nginx", "-g", "daemon off;"]
+
+       #comandos para criar e gerar imagem exemplo 
+       docker build -t AngeloSouza1/nginx-fullcycle .  (ponto indica esta na mesma pasta) 
+       docker run --rm -d -p 8080:80  AngeloSouza1/nginx-fullcycle
 
 
 
