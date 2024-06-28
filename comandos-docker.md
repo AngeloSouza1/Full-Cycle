@@ -90,6 +90,13 @@
 
      docker run --rm AngeloSouza1/olamundo   echo "Fala Ai"
 
+### 🔹 ENTRYPOINT
+     Comando fixo(valor padrão)
+     CMD - Comando Variavel(parametro)
+
+        FROM ubuntu:latest
+        ENTRYPOINT ["echo", "Hello "]
+        CMD [ "World!" ]
 
 
 

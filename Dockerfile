@@ -11,9 +11,21 @@
 
 #COPY html/ /usr/share/nginx/html 
 
+#-------------------------------------------------------
+
+#FROM ubuntu:latest
+#
+#CMD [ "echo",  "Hello World!" ]
+#
+
+#-------------------------------------------------------
 
 FROM ubuntu:latest
 
-CMD [ "echo",  "Hello World!" ]
+ENTRYPOINT ["echo", "Hello "]
+
+CMD [ "World!" ]
+
+
 
     
