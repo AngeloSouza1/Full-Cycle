@@ -111,7 +111,13 @@
 
 
 
+### 🔹Subindo imagem no Dockerhub
 
+      Logar primero : Docker login
+         Username                   
+         Password
+    usar o username e depois o nome da imagem! segue comando:
+    docker push aafs1981/nginx-fullcycle2024
 
 
 
