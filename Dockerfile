@@ -20,12 +20,18 @@
 
 #-------------------------------------------------------
 
+#FROM ubuntu:latest
+#
+#ENTRYPOINT ["echo", "Hello "]
+#
+#CMD [ "World!" ]
+
+#-------------------------------------------------------
+
 FROM ubuntu:latest
 
 ENTRYPOINT ["echo", "Hello "]
 
 CMD [ "World!" ]
-
-
 
     
