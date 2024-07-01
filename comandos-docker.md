@@ -149,21 +149,68 @@ docker run -dit --name ubuntu1 --network minharede bash(criando contaniers na re
 curl http://host.docker.internal:8000
 
 
+### 🔹Instalando framework em um container
+
+      -> Instalando  frameword escohido: Laravel
+       * gerado arquivo Dockerfile:
+
+                                 FROM php:7.4-cli
+
+                    # Definir o diretório de trabalho
+                    WORKDIR /var/www
+
+                    # Instalar dependências do sistema e extensões PHP necessárias
+                    RUN apt-get update && \
+                        apt-get install -y libzip-dev git unzip curl && \
+                        docker-php-ext-install zip
+
+                    # Instalar Composer
+                    RUN php -r "copy('https://getcomposer.org/installer', 'composer-setup.php');" && \
+                        php composer-setup.php && \
+                        php -r "unlink('composer-setup.php');"
+
+                    # Ajustar o tempo limite do Composer
+                    RUN php composer.phar config --global process-timeout 2000
+
+                    # Criar um usuário não-root
+                    RUN useradd -m appuser
+                    USER appuser
+                    WORKDIR /home/appuser
+
+                    # Criar projeto Laravel no diretório correto
+                    RUN /var/www/composer.phar create-project --prefer-dist laravel/laravel /home/appuser/laravel
+
+                    # Ajustar permissões
+                    USER root
+                    RUN chown -R appuser:appuser /home/appuser/laravel
+
+                    USER appuser
+                    WORKDIR /home/appuser/laravel
+
+                    # Expor a porta e iniciar o servidor
+                    EXPOSE 8000
+                    ENTRYPOINT [ "php", "artisan", "serve" ]
+                    CMD [ "--host=0.0.0.0" ]
 
 
+       executando o server do Laravel 
+       php artisan serve
+    
+      (Comando para criar a imagem) 
+       docker build -t aafs1981/laravel:latest . 
 
+      (Comando para rodar a  imagem na porta 80) 
+       docker run --rm -d --name laravel -p 8000:8000 aafs1981/laravel:latest
 
+      dica: mudar o acesso em outra porta, por exemplo 8001 !
+      (derrubar o container)
+       docker rm -f laravel
 
+      (derrubar o container)
+       docker rm -f laravel
 
-
-
-
-
-
-
-
-
-
+      (Comando para rodar a  imagem na porta 81) 
+       docker run --rm -d --name laravel -p 8001:8001 aafs1981/laravel:latest --host=0.0.0.0 --port=8001
 
 
 
