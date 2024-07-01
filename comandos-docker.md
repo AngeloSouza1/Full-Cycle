@@ -119,6 +119,53 @@
     usar o username e depois o nome da imagem! segue comando:
     docker push aafs1981/nginx-fullcycle2024
 
+### 🔹Entendendo Tipos de Network
+
+    (tipo 1)  - bridge * mais comum, é a padrão
+    (tipo 2)  - host
+    (tipo 3)  - overlay
+    (tipo 4)  - maclan
+    (tipo 5)  - none
+
+### 🔹Trabalhando com Bridge
+     
+    docker network create --driver bridge 'minharede' (criando uma rede)
+docker run -dit --name ubuntu1 --network minharede bash(criando contaniers na rede)
+
+    docker network ls      (listar redes)
+    docker network prune  (remover redes)
+    docker network inspect bridge (inspeção das redes)
+    docker attach <nome rede> (acesso rede)
+    * ao acessar container via bash, para saber o ip
+    ip addr show
+    docker network connect minharede ubuntu3 (conectando um container a uma rede)
+
+
+### 🔹Trabalhando com Bridge
+
+    no exemplo subiu uma aplicacao em php( html/index.html ), deixou a porta 8000 exposta e com o comando abaixo pelo container acessou: 
+    * instalou o Curl (apt-get install curl -y)
+
+curl http://host.docker.internal:8000
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
