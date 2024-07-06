@@ -1,0 +1,48 @@
+FROM php:7.4-cli AS builder
+
+# Definir o diretório de trabalho
+WORKDIR /var/www
+
+# Instalar dependências do sistema e extensões PHP necessárias
+RUN apt-get update && \
+    apt-get install -y libzip-dev git unzip curl && \
+    docker-php-ext-install zip && \
+    php -r "copy('https://getcomposer.org/installer', 'composer-setup.php');" && \
+    php composer-setup.php --install-dir=/usr/local/bin --filename=composer && \
+    php -r "unlink('composer-setup.php');" && \
+    composer config --global process-timeout 2000
+
+# Criar um usuário não-root
+RUN useradd -m appuser
+USER appuser
+
+# Criar projeto Laravel no diretório correto
+RUN composer create-project --prefer-dist laravel/laravel /home/appuser/laravel
+
+# Ajustar permissões
+USER root
+RUN chown -R appuser:appuser /home/appuser/laravel
+
+USER appuser
+WORKDIR /home/appuser/laravel
+
+# Multistage Building
+
+FROM php:7.4-fpm-alpine
+
+# Definir o diretório de trabalho
+WORKDIR /var/www
+
+# Remover o diretório padrão do nginx
+RUN rm -rf /var/www/html
+
+# Copiar a aplicação Laravel do estágio de build
+COPY --from=builder /home/appuser/laravel /var/www
+
+# Ajustar permissões
+RUN chown -R www-data:www-data /var/www
+
+# Expor a porta e iniciar o servidor
+EXPOSE 9000
+CMD ["php-fpm"]
+
