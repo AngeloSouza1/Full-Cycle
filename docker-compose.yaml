@@ -12,7 +12,7 @@ services:
     image: your_laravel_image
     build:
       context: ./laravel
-      dockerfile: Dockerfile
+      dockerfile: Dockerfile.prod
     volumes:
       - ./laravel:/var/www/html
     depends_on:
