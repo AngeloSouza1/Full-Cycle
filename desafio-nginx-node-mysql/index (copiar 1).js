@@ -41,15 +41,8 @@ app.get('/', (req, res) => {
       res.status(500).send('Erro ao buscar nomes');
       return;
     }
-    const names = result.map((item) => `<li>${item.name}</li>`).join('');
-    const htmlResponse = `
-      <h1>Full Cycle Rocks!</h1>
-      <p>Lista de nomes cadastrados:</p>
-      <ol>
-        ${names}
-      </ol>
-    `;
-    res.send(htmlResponse);
+    const names = result.map((item) => item.name).join(', ');
+    res.send(`<h1>Full Cycle Rocks!</h1><p>Lista de nomes cadastrados: ${names}</p>`);
   });
 });
 
